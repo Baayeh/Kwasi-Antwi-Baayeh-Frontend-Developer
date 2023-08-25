@@ -48,7 +48,10 @@ const CapsuleCard: React.FC<CapsuleCardProps> = ({ capsule }) => {
           </span>
           <span className="capitalize text-gray-400">{capsule.status}</span>
         </div>
-        <div className="flex items-center gap-x-1 text-sm cursor-default">
+        <div
+          className="flex items-center gap-x-1 text-sm cursor-default"
+          title="Type"
+        >
           <span>
             <FaRegCircleDot />
           </span>
