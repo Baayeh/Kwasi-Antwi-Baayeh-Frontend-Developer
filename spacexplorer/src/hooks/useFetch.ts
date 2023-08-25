@@ -23,8 +23,9 @@ const useFetch = (
       setLoading(false);
       setError(null);
     } catch (error: any) {
-      console.log('Error fetching data: ', error);
-      setError(error.response.data.error);
+      setError(
+        'Something went wrong. Please refresh the page or try again later.'
+      );
       setLoading(false);
       setData(null);
     }
