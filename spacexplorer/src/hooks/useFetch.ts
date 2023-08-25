@@ -19,7 +19,7 @@ const useFetch = (
       setLoading(true);
       const response = await axiosInstance.get(url);
       setData(response.data.data);
-      dispatch(setAction(response.data.data));
+      dispatch(setAction(response.data));
       setLoading(false);
       setError(null);
     } catch (error: any) {
