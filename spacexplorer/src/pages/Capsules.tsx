@@ -33,12 +33,12 @@ const Capsules = () => {
   }, []);
 
   return (
-    <section className="min-h-screen pt-[8rem] px-4 bg-main-img bg-cover bg-no-repeat pb-10">
+    <section className="min-h-screen pt-[8rem] px-4 bg-main-img bg-cover bg-no-repeat bg-fixed pb-10">
       <div className="wrapper lg:w-[60rem] mx-auto">
         <h1 className="text-white text-3xl mb-4">
           Search and Pagination goes here
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {getContent()}
         </div>
       </div>
