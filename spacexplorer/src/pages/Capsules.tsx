@@ -21,7 +21,7 @@ const Capsules = () => {
         <>
           {capsules &&
             capsules.map((capsule) => (
-              <CapsuleCard key={capsule.id} capsule={capsule} />
+              <CapsuleCard key={capsule.capsule_serial} capsule={capsule} />
             ))}
         </>
       );

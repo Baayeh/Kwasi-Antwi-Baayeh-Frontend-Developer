@@ -14,9 +14,9 @@ const CapsuleCard: React.FC<CapsuleCardProps> = ({ capsule }) => {
   return (
     <div className="border border-gray-700 rounded-md p-5 grid place-content-between min-h-[10rem]">
       <div>
-        <h2 className="font-bold">{capsule.serial}</h2>
+        <h2 className="font-bold">{capsule.capsule_serial}</h2>
         <p className="text-gray-400 text-sm">
-          {capsule.last_update ? capsule.last_update : 'Not available'}
+          {capsule.details ? capsule.details : 'Not available'}
         </p>
       </div>
 
