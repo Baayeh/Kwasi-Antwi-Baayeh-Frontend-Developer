@@ -5,6 +5,10 @@ interface CapsulesState {
   capsules: Capsule[] | null;
 }
 
+const formatDate = (date: string) => {
+  return new Date(date).toLocaleString().split(', ')[0];
+};
+
 const initialState = {
   capsules: null,
 } as CapsulesState;
@@ -14,7 +18,13 @@ const capsulesSlice = createSlice({
   initialState,
   reducers: {
     setCapsules: (state, action) => {
-      state.capsules = action.payload;
+      const newData = action.payload.map((capsule: Capsule) => {
+        return {
+          ...capsule,
+          original_launch: formatDate(capsule.original_launch),
+        };
+      });
+      state.capsules = newData;
     },
     searchCapsule: (state, action) => {
       state.capsules = action.payload;
