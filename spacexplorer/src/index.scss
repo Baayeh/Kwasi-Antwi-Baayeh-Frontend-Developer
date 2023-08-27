@@ -21,3 +21,54 @@ body {
 .active {
   @apply text-orange-500 border-orange-500;
 }
+
+// MultiSelect Component
+.p-multiselect-panel {
+  @apply bg-gray-700 text-white;
+}
+
+.p-multiselect-item {
+  @apply text-gray-300;
+  color: #fff !important;
+
+  &:hover {
+    @apply text-gray-700;
+  }
+}
+
+div.mask {
+  --bg-opacity: 1;
+  --glass-bg: rgba(3, 7, 17, 0.7);
+  --text-primary: #e1e7ef;
+  --secondary-bg: rgb(7, 25, 43);
+
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  color: var(--text-primary);
+
+  div#dialog {
+    @apply w-[100%] sm:w-[65dvw] lg:w-[40dvw];
+
+    div.p-dialog-header,
+    div.p-dialog-content {
+      background: var(--secondary-bg);
+      color: var(--text-primary);
+    }
+  }
+}
+
+table {
+  border-collapse: collapse;
+
+  tr {
+    &:nth-of-type(2n) {
+      @apply bg-slate-50 dark:bg-gray-950/30;
+    }
+  }
+
+  th,
+  td {
+    padding: 0.8rem;
+  }
+}
