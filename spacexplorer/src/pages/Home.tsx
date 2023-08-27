@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Home = () => {
   return (
     <section className="min-h-screen bg-banner-img bg-cover bg-no-repeat relative">
