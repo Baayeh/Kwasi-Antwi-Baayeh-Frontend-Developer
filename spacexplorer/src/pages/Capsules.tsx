@@ -1,11 +1,33 @@
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { BsArrowLeftSquareFill, BsArrowRightSquareFill } from 'react-icons/bs';
 import { selectCapsules, setCapsules } from '../app/capsuleSlice';
-import { CapsuleCard, Loader } from '../components';
+import {
+  CapsuleCard,
+  Loader,
+  Paginator,
+} from '../components';
 import { useAppSelector, useFetch } from '../hooks';
 
 const Capsules = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [capsulesPerPage] = useState(6);
+
   const { capsules } = useAppSelector(selectCapsules);
-  const { loading, fetchData, error } = useFetch('/capsules', setCapsules);
+  const { loading, fetchData, error } = useFetch(`/capsules`, setCapsules);
+
+  // Get current capsules per page
+  const getCurrentCapsules = (data: Capsule[]) => {
+    const indexOfLastCapsule = currentPage * capsulesPerPage;
+    const indexOfFirstCapsule = indexOfLastCapsule - capsulesPerPage;
+    const currentCapsules = data.slice(indexOfFirstCapsule, indexOfLastCapsule);
+
+    return currentCapsules;
+  };
+
+  // calculate total pages
+  const totalPages = capsules
+    ? Math.ceil(capsules.length / capsulesPerPage)
+    : 0;
 
   const getContent = () => {
     if (loading) {
@@ -20,7 +42,7 @@ const Capsules = () => {
       return (
         <>
           {capsules &&
-            capsules.map((capsule) => (
+            getCurrentCapsules(capsules).map((capsule) => (
               <CapsuleCard key={capsule.capsule_serial} capsule={capsule} />
             ))}
         </>
@@ -35,9 +57,11 @@ const Capsules = () => {
   return (
     <section className="min-h-screen pt-[8rem] px-4 bg-main-img bg-cover bg-no-repeat bg-fixed pb-10">
       <div className="wrapper lg:w-[60rem] mx-auto">
-        <h1 className="text-white text-3xl mb-4">
-          Search and Pagination goes here
-        </h1>
+        <Paginator
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalPages={totalPages}
+        />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {getContent()}
         </div>
