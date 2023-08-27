@@ -4,15 +4,11 @@ import { debounceTime, distinctUntilChanged, fromEvent, map } from 'rxjs';
 interface SearchBarProps {
   capsules: Capsule[] | null;
   setFilteredCapsules: (filteredCapsules: Capsule[] | null) => void;
-  query: string;
-  setQuery: (query: string) => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({
   capsules,
   setFilteredCapsules,
-  query,
-  setQuery,
 }) => {
   const searchRef = useRef<HTMLInputElement | any>();
 

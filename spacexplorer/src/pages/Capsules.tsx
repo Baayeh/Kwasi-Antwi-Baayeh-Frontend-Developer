@@ -30,7 +30,6 @@ const Capsules = () => {
   const { loading, fetchData, error } = useFetch(`/capsules`, setCapsules);
 
   // Filter states, types and original launch date
-  const [query, setQuery] = useState('');
   const [filteredCapsules, setFilteredCapsules] = useState<Capsule[] | null>(
     null
   );
@@ -158,8 +157,6 @@ const Capsules = () => {
         <div className="sm:border border-gray-700 sm:mb-10 py-5 sm:p-5 rounded-md flex flex-col items-center sm:items-start gap-y-4 lg:flex-row lg:justify-between lg:items-center">
           <SearchBar
             capsules={capsules}
-            query={query}
-            setQuery={setQuery}
             setFilteredCapsules={setFilteredCapsules}
           />
           <FilterOptions

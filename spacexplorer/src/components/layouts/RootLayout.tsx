@@ -1,5 +1,5 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
+import { ToasterProvider } from '../../libs';
 import Navigation from '../Navigation';
 
 const RootLayout = () => {
@@ -8,6 +8,7 @@ const RootLayout = () => {
       <Navigation />
       <main>
         <Outlet />
+        <ToasterProvider />
       </main>
     </>
   );
