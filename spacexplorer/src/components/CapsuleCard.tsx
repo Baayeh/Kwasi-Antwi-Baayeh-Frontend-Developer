@@ -8,14 +8,21 @@ import { FaRegCircleDot } from 'react-icons/fa6';
 
 interface CapsuleCardProps {
   capsule: Capsule;
+  showCapsuleDialog: (item: Capsule) => void;
 }
 
-const CapsuleCard: React.FC<CapsuleCardProps> = ({ capsule }) => {
+const CapsuleCard: React.FC<CapsuleCardProps> = ({
+  capsule,
+  showCapsuleDialog,
+}) => {
   return (
-    <div className="border border-gray-700 rounded-md p-5 grid place-content-between min-h-[10rem]">
+    <div
+      className="border border-gray-700 rounded-md p-5 grid place-content-between min-h-[10rem] hover:cursor-pointer hover:border-gray-100 transition-colors duration-300 ease-in-out"
+      onClick={() => showCapsuleDialog(capsule)}
+    >
       <div>
         <h2 className="font-bold">{capsule.capsule_serial}</h2>
-        <p className="text-gray-400 text-sm">
+        <p role="paragraph" className="text-gray-400 text-sm">
           {capsule.details ? capsule.details : 'Not available'}
         </p>
       </div>

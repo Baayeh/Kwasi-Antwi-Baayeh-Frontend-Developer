@@ -3,6 +3,7 @@ import { BsArrowLeftSquareFill, BsArrowRightSquareFill } from 'react-icons/bs';
 import { selectCapsules, setCapsules } from '../app/capsuleSlice';
 import {
   CapsuleCard,
+  CapsuleDetails,
   Loader,
   Paginator,
 } from '../components';
@@ -12,6 +13,15 @@ const Capsules = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [capsulesPerPage] = useState(6);
 
+  // get single capsule
+  const [singleCapsule, setSingleCapsule] = useState<Capsule | null>(null);
+  const [visible, setVisible] = useState(false);
+  const showCapsuleDialog = (item: Capsule) => {
+    setVisible(true);
+    setSingleCapsule(item);
+  };
+
+  // Fetching capsules
   const { capsules } = useAppSelector(selectCapsules);
   const { loading, fetchData, error } = useFetch(`/capsules`, setCapsules);
 
@@ -66,6 +76,14 @@ const Capsules = () => {
           {getContent()}
         </div>
       </div>
+
+      {visible && (
+        <CapsuleDetails
+          visible={visible}
+          setVisible={setVisible}
+          capsule={singleCapsule}
+        />
+      )}
     </section>
   );
 };
