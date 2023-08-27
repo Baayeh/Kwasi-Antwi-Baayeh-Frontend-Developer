@@ -1,3 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
+
+@import 'primereact/resources/themes/lara-light-indigo/theme.css';
+@import 'primereact/resources/primereact.min.css';
+@import 'primeicons/primeicons.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: #030711;
+  min-height: 100vh;
+  color: #fff;
+  scroll-behavior: smooth;
+  scroll-padding-top: 74px;
+}
+
+.active {
+  @apply text-orange-500 border-orange-500;
+}
+
+// MultiSelect Component
+.p-multiselect-panel {
+  @apply bg-gray-700 text-white;
+}
+
+.p-multiselect-item {
+  @apply text-gray-300;
+  color: #fff !important;
+
+  &:hover {
+    @apply text-gray-700;
+  }
+}
+
+div.mask {
+  --bg-opacity: 1;
+  --glass-bg: rgba(3, 7, 17, 0.7);
+  --text-primary: #e1e7ef;
+  --secondary-bg: rgb(7, 25, 43);
+
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  color: var(--text-primary);
+
+  div#dialog {
+    @apply w-[100%] sm:w-[65dvw] lg:w-[40dvw];
+
+    div.p-dialog-header,
+    div.p-dialog-content {
+      background: var(--secondary-bg);
+      color: var(--text-primary);
+    }
+  }
+}
+
+table {
+  border-collapse: collapse;
+
+  tr {
+    &:nth-of-type(2n) {
+      @apply bg-slate-50 dark:bg-gray-950/30;
+    }
+  }
+
+  th,
+  td {
+    padding: 0.8rem;
+  }
+}
