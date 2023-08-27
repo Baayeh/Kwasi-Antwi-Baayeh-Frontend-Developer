@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 const Navigation = () => {
@@ -25,19 +24,6 @@ const Navigation = () => {
             }) => (isActive ? 'active' : '')}`}
           >
             Capsules
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="rockets"
-            className={`text-white border border-slate-400/70 p-2 rounded-md sm:text-xl hover:bg-slate-400/30 transition-colors duration-300 ease-in-out ${({
-              isActive,
-            }: {
-              isActive: boolean;
-            }) => (isActive ? 'active' : '')}`}
-            end
-          >
-            Rockets
           </NavLink>
         </li>
       </ul>
